@@ -34,5 +34,9 @@ public float speed;
         {
             transform.Translate(Vector3.up * speed * Time.deltaTime);
         }
+        if (Input.GetKey(KeyCode.LeftShift))
+        {
+            transform.Translate(Vector3.down * speed * Time.deltaTime);
+        }
     }
 }

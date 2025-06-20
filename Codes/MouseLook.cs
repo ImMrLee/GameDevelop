@@ -8,25 +8,22 @@ public class MouseLook : MonoBehaviour
     public Transform playerBody;
     float xRotation = 0f;
 
-    // Start is called before the first frame update  
     void Start()
     {
-        // lock and hide the cursor  
         Cursor.lockState = CursorLockMode.Locked;
     }
 
-    // Update is called once per frame  
     void Update()
     {
         float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity * Time.deltaTime;
         float mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity * Time.deltaTime;
 
         xRotation -= mouseY;
-        xRotation = Mathf.Clamp(xRotation, -90f, 90f); // limit the angle  
+        xRotation = Mathf.Clamp(xRotation, -90f, 90f); // 限定旋转角度范围
 
-        // rotate the camera within Y axis  
+        // Y轴旋转  
         transform.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
-        // rotate the player within X axis  
+        // X轴旋转  
         playerBody.Rotate(Vector3.up * mouseX);
     }
 }
